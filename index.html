@@ -67,22 +67,22 @@
             z-index: 10;
         }
 
-        /* 1. Слайдер заведений (Веер) */
-        .swiper-frame {
+        /* 1. Карусель заведений (Дуга) */
+        .arc-carousel {
+            position: relative;
             width: 100%;
             max-width: 430px;
-            overflow: hidden; 
-            padding: 20px 0 80px; /* Увеличили отступы для тени */
-            filter: drop-shadow(0 4px 27.9px rgba(0,0,0,0.15)); /* Тень на весь фрейм */
+            height: 480px;
+            overflow: hidden;
+            filter: drop-shadow(0 4px 27.9px rgba(0,0,0,0.15));
+            touch-action: pan-y;
         }
 
-        .mySwiper {
-            width: 100%;
-            overflow: visible !important; 
-            z-index: 100;
-        }
-
-        .mySwiper .swiper-slide {
+        .arc-card {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            margin-left: -119px; /* половина ширины 238/2 */
             width: 238px;
             height: 418px;
             border-radius: 23px;
@@ -92,8 +92,9 @@
             mask-size: 100% 100%;
             -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='238' height='418' viewBox='0 0 238 418'%3E%3Cpath d='M0,46 C0,11.34 11.34,0 46,0 L192,0 C226.66,0 238,11.34 238,46 L238,372 C238,406.66 226.66,418 192,418 L46,418 C11.34,418 0,406.66 0,372 Z'/%3E%3C/svg%3E");
             -webkit-mask-size: 100% 100%;
-            position: relative;
             background-color: #2a2a2a;
+            cursor: grab;
+            will-change: transform, opacity;
         }
 
         .slide-bg {
@@ -225,10 +226,8 @@
         
         <img class="logo" src="images/logo.png" />
 
-        <div class="swiper-frame">
-            <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
+        <div class="arc-carousel" id="venueCarousel">
+                <div class="arc-card">
                     <img src="images/card01.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Бахчисарай</div>
@@ -236,7 +235,7 @@
                         <a href="https://yandex.com/maps/-/CPrluX9l" target="_blank" class="maps-btn">открыть яндекс карты</a>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card02.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Ак-Мечеть</div>
@@ -244,7 +243,7 @@
                         <a href="https://yandex.com/maps/-/CPrluO2B" target="_blank" class="maps-btn">открыть яндекс карты</a>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card03.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Франко</div>
@@ -252,7 +251,7 @@
                         <a href="https://yandex.com/maps/-/CPrlyZzk" target="_blank" class="maps-btn">открыть яндекс карты</a>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card04.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Пушкина</div>
@@ -260,7 +259,7 @@
                         <a href="https://yandex.com/maps/-/CPrluL4E" target="_blank" class="maps-btn">открыть яндекс карты</a>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card05.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Евпатория</div>
@@ -268,7 +267,7 @@
                         <a href="https://yandex.com/maps/-/CPrlyM95" target="_blank" class="maps-btn">открыть яндекс карты</a>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card06.png" class="slide-bg" />
                     <div class="slide-content">
                         <div class="shop-name">Кавабанга<br/>Саки</div>
@@ -277,7 +276,7 @@
                     </div>
                 </div>
                 <!-- 7. Dessert Kitchen -->
-                <div class="swiper-slide">
+                <div class="arc-card">
                     <img src="images/card07.png" class="slide-bg" />
                     <div class="slide-content" style="justify-content: flex-start; padding-top: 50px;">
                         <div class="shop-name" style="color: #000; font-size: 24px; font-weight: 600; text-shadow: none;">Kavabanga<br/>dessert kitchen</div>
@@ -290,8 +289,6 @@
                         <a href="https://yandex.com/maps/-/CPrlyK2U" target="_blank" class="maps-btn" style="margin-top: 10px; width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.05); color: #383434; border: 0.3px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">открыть яндекс карты</a>
                     </div>
                 </div>
-            </div>
-        </div>
         </div>
 
         <div class="dessert-section">
@@ -315,29 +312,156 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "creative",
-            centeredSlides: true,
-            slidesPerView: "auto",
-            initialSlide: 3, 
-            loop: true,
-            speed: 1000, /* Очень плавное и медленное переключение */
-            autoplay: { delay: 4000 },
-            grabCursor: true,
-            on: {
-                slideChange: function () {
-                    // Эффект вибрации "револьвера" при каждом переключении
-                    if (navigator.vibrate) {
-                        navigator.vibrate(10); 
+        // ====== CUSTOM ARC CAROUSEL ======
+        (function() {
+            var cards = document.querySelectorAll('.arc-card');
+            var total = cards.length;
+            var current = 0;
+            var target = 0;
+            var animating = false;
+            var swipeLocked = false; // Блокировка от быстрых свайпов
+
+            // Параметры дуги
+            var ARC_RADIUS = 600;
+            var ANGLE_STEP = 26; // градусов между карточками (больше = больше расстояние)
+            var ROTATION_FACTOR = 0.35;
+
+            function wrap(val) {
+                while (val < 0) val += total;
+                while (val >= total) val -= total;
+                return val;
+            }
+
+            function getOffset(index) {
+                var diff = index - current;
+                while (diff > total / 2) diff -= total;
+                while (diff < -total / 2) diff += total;
+                return diff;
+            }
+
+            function render() {
+                for (var i = 0; i < total; i++) {
+                    var offset = getOffset(i);
+                    var angle = offset * ANGLE_STEP;
+                    var rad = (angle * Math.PI) / 180;
+
+                    var x = Math.sin(rad) * ARC_RADIUS;
+                    var y = (1 - Math.cos(rad)) * ARC_RADIUS;
+                    var rot = angle * ROTATION_FACTOR;
+
+                    var scale = 1 - Math.abs(offset) * 0.1;
+                    var opacity = 1 - Math.abs(offset) * 0.3;
+                    scale = Math.max(scale, 0.6);
+                    opacity = Math.max(opacity, 0.15);
+
+                    cards[i].style.transform = 
+                        'translate3d(' + x + 'px, ' + y + 'px, 0) ' +
+                        'rotate(' + rot + 'deg) ' +
+                        'scale(' + scale + ')';
+                    cards[i].style.opacity = opacity;
+                    cards[i].style.zIndex = 100 - Math.round(Math.abs(offset) * 10);
+                }
+            }
+
+            function animateTo(targetVal) {
+                target = targetVal;
+                if (animating) return;
+                animating = true;
+
+                function step() {
+                    var diff = target - current;
+                    while (diff > total / 2) diff -= total;
+                    while (diff < -total / 2) diff += total;
+
+                    if (Math.abs(diff) < 0.005) {
+                        current = wrap(target);
+                        render();
+                        animating = false;
+                        return;
                     }
-                },
-            },
-            creativeEffect: {
-                limitProgress: 3,
-                prev: { translate: ["-108%", "12%", -100], rotate: [0, 0, -5], scale: 0.88, opacity: 0.6 },
-                next: { translate: ["108%", "12%", -100], rotate: [0, 0, 5], scale: 0.88, opacity: 0.6 },
-            },
-        });
+
+                    current += diff * 0.05; // Плавность (меньше = мягче)
+                    current = wrap(current);
+                    render();
+                    requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            function goNext() {
+                if (swipeLocked) return;
+                swipeLocked = true;
+                setTimeout(function() { swipeLocked = false; }, 400);
+                target = wrap(target + 1);
+                if (navigator.vibrate) navigator.vibrate(10);
+                animateTo(target);
+            }
+
+            function goPrev() {
+                if (swipeLocked) return;
+                swipeLocked = true;
+                setTimeout(function() { swipeLocked = false; }, 400);
+                target = wrap(target - 1);
+                if (navigator.vibrate) navigator.vibrate(10);
+                animateTo(target);
+            }
+
+            // === Touch/Swipe ===
+            var startX = 0, isDragging = false, hasMoved = false;
+            var carousel = document.getElementById('venueCarousel');
+
+            carousel.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                hasMoved = false;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                if (Math.abs(e.touches[0].clientX - startX) > 10) hasMoved = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', function(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                var dx = e.changedTouches[0].clientX - startX;
+                if (hasMoved && Math.abs(dx) > 50) {
+                    if (dx < 0) goNext();
+                    else goPrev();
+                }
+            });
+
+            // === Mouse drag ===
+            carousel.addEventListener('mousedown', function(e) {
+                startX = e.clientX;
+                isDragging = true;
+                hasMoved = false;
+                e.preventDefault();
+            });
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                if (Math.abs(e.clientX - startX) > 10) hasMoved = true;
+            });
+            document.addEventListener('mouseup', function(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                var dx = e.clientX - startX;
+                if (hasMoved && Math.abs(dx) > 50) {
+                    if (dx < 0) goNext();
+                    else goPrev();
+                }
+            });
+
+            // === Autoplay ===
+            var autoplayTimer = setInterval(goNext, 4000);
+            carousel.addEventListener('touchstart', function() { clearInterval(autoplayTimer); }, { passive: true });
+            carousel.addEventListener('touchend', function() {
+                autoplayTimer = setInterval(goNext, 4000);
+            }, { passive: true });
+
+            // Первый рендер
+            render();
+        })();
 
         var cakeSwiper = new Swiper(".cakeSwiper", {
             loop: true,
