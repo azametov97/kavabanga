@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta charset="utf-8" />
+    <title>KAVA KAVABANGA - Таплинк</title>
+    <!-- Подключаем Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="globals.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #313337;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+        }
+
+        .iphone-pro {
+            width: 100%;
+            max-width: 430px;
+            background: #313337 url('images/bg.jpg') no-repeat center top;
+            background-size: 100% 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+            box-sizing: border-box;
+        }
+
+        .header-btns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 20px 0;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .telegram, .call {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            width: 110px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+
+        /* 1. Слайдер заведений (Веер) */
+        .swiper-frame {
+            width: 100%;
+            max-width: 430px;
+            overflow: hidden; 
+            padding: 20px 0 80px; /* Увеличили отступы для тени */
+            filter: drop-shadow(0 4px 27.9px rgba(0,0,0,0.15)); /* Тень на весь фрейм */
+        }
+
+        .mySwiper {
+            width: 100%;
+            overflow: visible !important; 
+            z-index: 100;
+        }
+
+        .mySwiper .swiper-slide {
+            width: 238px;
+            height: 418px;
+            border-radius: 23px;
+            border: 0.3px solid rgba(255,255,255,0.2);
+            box-sizing: border-box;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='238' height='418' viewBox='0 0 238 418'%3E%3Cpath d='M0,46 C0,11.34 11.34,0 46,0 L192,0 C226.66,0 238,11.34 238,46 L238,372 C238,406.66 226.66,418 192,418 L46,418 C11.34,418 0,406.66 0,372 Z'/%3E%3C/svg%3E");
+            mask-size: 100% 100%;
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='238' height='418' viewBox='0 0 238 418'%3E%3Cpath d='M0,46 C0,11.34 11.34,0 46,0 L192,0 C226.66,0 238,11.34 238,46 L238,372 C238,406.66 226.66,418 192,418 L46,418 C11.34,418 0,406.66 0,372 Z'/%3E%3C/svg%3E");
+            -webkit-mask-size: 100% 100%;
+            position: relative;
+            background-color: #2a2a2a;
+        }
+
+        .slide-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px 20px;
+            color: white;
+            z-index: 2;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .shop-name {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .shop-address {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .maps-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.3px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        /* 2. Блок десертов */
+        .dessert-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            z-index: 200;
+        }
+
+        .main-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .p-desc {
+            color: #d0bdaf;
+            width: 85%;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .open-store {
+            background: white;
+            color: black;
+            padding: 18px 45px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        /* 3. Слайдер тортов */
+        .cakeSwiper {
+            width: 100%;
+            margin-top: 60px;
+            padding-bottom: 40px;
+            z-index: 50;
+        }
+
+        .cakeSwiper .swiper-slide {
+            width: 98px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .cakeSwiper .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="iphone-pro">
+        <div class="header-btns">
+            <a href="https://t.me/kavabangacrimea" target="_blank" class="telegram">написать</a>
+            <a href="tel:+79785396994" class="call">позвонить</a>
+        </div>
+        
+        <img class="logo" src="images/logo.png" />
+
+        <div class="swiper-frame">
+            <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/card01.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Бахчисарай</div>
+                        <div class="shop-address">г. Бахчисарай, Фрунзе 42</div>
+                        <a href="https://yandex.com/maps/-/CPrluX9l" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/card02.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Ак-Мечеть</div>
+                        <div class="shop-address">г. Симферополь, ул. Байрам 5</div>
+                        <a href="https://yandex.com/maps/-/CPrluO2B" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/card03.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Франко</div>
+                        <div class="shop-address">г. Симферополь, ул. Ивана Франко 12</div>
+                        <a href="https://yandex.com/maps/-/CPrlyZzk" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/card04.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Пушкина</div>
+                        <div class="shop-address">г. Симферополь, ул. Пушкина 9А</div>
+                        <a href="https://yandex.com/maps/-/CPrluL4E" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/card05.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Евпатория</div>
+                        <div class="shop-address">г. Евпатория, ул. Горького 3А</div>
+                        <a href="https://yandex.com/maps/-/CPrlyM95" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/card06.png" class="slide-bg" />
+                    <div class="slide-content">
+                        <div class="shop-name">Кавабанга<br/>Саки</div>
+                        <div class="shop-address">г. Саки, ул. Революции 33</div>
+                        <a href="https://yandex.com/maps/-/CPrlyJY1" target="_blank" class="maps-btn">открыть яндекс карты</a>
+                    </div>
+                </div>
+                <!-- 7. Dessert Kitchen -->
+                <div class="swiper-slide">
+                    <img src="images/card07.png" class="slide-bg" />
+                    <div class="slide-content" style="justify-content: flex-start; padding-top: 50px;">
+                        <div class="shop-name" style="color: #000; font-size: 24px; font-weight: 600; text-shadow: none;">Kavabanga<br/>dessert kitchen</div>
+                        <div class="shop-address" style="color: #887262; opacity: 0.8; margin-top: 5px;">г. Евпатория,<br/>Новоселовское шоссе 1Ж</div>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center; width: 100%;">
+                            <a href="http://kavabanga-dessert.ru" target="_blank" class="maps-btn" style="flex: 1; min-width: 0; background: rgba(0,0,0,0.05); color: #383434; border: 0.3px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">сайт</a>
+                            <a href="tel:+79784728170" class="maps-btn" style="flex: 1; min-width: 0; background: rgba(0,0,0,0.05); color: #383434; border: 0.3px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">телефон</a>
+                        </div>
+                        <a href="https://yandex.com/maps/-/CPrlyK2U" target="_blank" class="maps-btn" style="margin-top: 10px; width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.05); color: #383434; border: 0.3px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">открыть яндекс карты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="dessert-section">
+            <h1 class="main-title">Мы запустили<br/>десерты и торты<br/>на заказ</h1>
+            <p class="p-desc">Домашний вкус с профессиональным подходом</p>
+            <a href="http://kavabanga-dessert.ru" target="_blank" class="open-store">Открыть магазин</a>
+        </div>
+
+        <div class="swiper cakeSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide cake-slide"><img src="images/cake01.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake02.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake03.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake04.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake05.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake06.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake07.png" /></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "creative",
+            centeredSlides: true,
+            slidesPerView: "auto",
+            initialSlide: 3, 
+            loop: true,
+            speed: 1000, /* Очень плавное и медленное переключение */
+            autoplay: { delay: 4000 },
+            grabCursor: true,
+            on: {
+                slideChange: function () {
+                    // Эффект вибрации "револьвера" при каждом переключении
+                    if (navigator.vibrate) {
+                        navigator.vibrate(10); 
+                    }
+                },
+            },
+            creativeEffect: {
+                limitProgress: 3,
+                prev: { translate: ["-108%", "12%", -100], rotate: [0, 0, -5], scale: 0.88, opacity: 0.6 },
+                next: { translate: ["108%", "12%", -100], rotate: [0, 0, 5], scale: 0.88, opacity: 0.6 },
+            },
+        });
+
+        var cakeSwiper = new Swiper(".cakeSwiper", {
+            loop: true,
+            slidesPerView: "auto", // Слайдер теперь сам определяет ширину по контенту
+            spaceBetween: 12,
+            speed: 5000,
+            autoplay: { delay: 0 },
+            allowTouchMove: false,
+        });
+    </script>
+</body>
+</html>

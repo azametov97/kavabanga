@@ -1,0 +1,210 @@
+/* Общие настройки для всей страницы */
+.iphone-pro {
+  overflow-x: hidden;
+  background-color: #3d3b38; /* Цвет из макета для фона */
+  width: 100%;
+  max-width: 430px; /* Размер iPhone 16 Pro примерно */
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+/* Шапка с логотипом и кнопками */
+.iphone-pro .logo {
+  width: 120px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+.iphone-pro .telegram, .iphone-pro .call {
+  position: absolute;
+  top: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.iphone-pro .telegram { left: 20px; }
+.iphone-pro .call { right: 20px; }
+
+/* Карусель карточек (временное позиционирование до JS) */
+.iphone-pro .group {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стилизация самих карточек */
+.group-2, .group-4, .group-5, .group-7, .group-8 {
+  position: absolute;
+  width: 260px;
+  height: 400px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Центральная активная карточка */
+.group-2 {
+  z-index: 5;
+  transform: scale(1);
+}
+
+/* Боковые карточки (будут управляться каруселью) */
+.group-5, .group-8 {
+  z-index: 3;
+  opacity: 0.6;
+}
+
+.group-5 { transform: translateX(-150px) scale(0.85); }
+.group-8 { transform: translateX(150px) scale(0.85); }
+.group-4, .group-7 { display: none; } /* Скрываем лишние пока что */
+
+/* Контент внутри карточек */
+.rectangle-5, .rectangle-6, .rectangle-7, .rectangle-8, .rectangle-9 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Текст на карточках */
+.text-wrapper-2, .text-wrapper-8, .text-wrapper-10, .text-wrapper-12, .kavabanga-dessert {
+  position: absolute;
+  bottom: 110px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.text-wrapper-3, .text-wrapper-9, .element-2, .element-3, .element-4 {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  z-index: 2;
+}
+
+/* Кнопка на карточке */
+.div-wrapper, .frame-3 {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Время работы */
+.frame {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.ellipse {
+  width: 8px;
+  height: 8px;
+  background: #00c745;
+  border-radius: 50%;
+}
+
+.text-wrapper-4 {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Блок "Мы запустили десерты" */
+.p {
+  color: #d0bdaf;
+  width: 80%;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+h1.main-title {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 40px;
+  line-height: 1.2;
+}
+
+/* Кнопка "Открыть магазин" */
+.open-store {
+  background: white;
+  color: black;
+  padding: 18px 35px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 30px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Слайдер с десертами снизу */
+.kitchen-slider {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  width: 100%;
+  padding: 30px 20px;
+  margin-top: 20px;
+  scrollbar-width: none;
+}
+
+.kitchen-slider::-webkit-scrollbar { display: none; }
+
+.kitchen-slider img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+/* Фикс для изображения logo из макета Anima (если оно было не img) */
+.image { display: none; } /* Убираем лишнее изображение */
