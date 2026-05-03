@@ -6,6 +6,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta charset="utf-8" />
     <title>KAVA KAVABANGA - Таплинк</title>
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Подключаем Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="globals.css">
@@ -25,7 +29,7 @@
         .iphone-pro {
             width: 100%;
             max-width: 430px;
-            background: #313337 url('images/bg.jpg') no-repeat center top;
+            background: #313337 url('images/bg_new.png') no-repeat center top;
             background-size: 100% 100%;
             position: relative;
             display: flex;
@@ -215,6 +219,57 @@
             border-radius: 20px;
         }
 
+        /* 4. Блок HR */
+        .hr-section {
+            width: calc(100% - 40px);
+            margin: 50px 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 25px;
+            background: url('images/hr_bg.png') no-repeat center;
+            background-size: cover;
+            border-radius: 35px;
+            z-index: 200;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .hr-title {
+            color: #1a1a1a;
+            font-size: 26px;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .hr-desc {
+            color: #444;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            opacity: 0.9;
+            max-width: 260px;
+        }
+
+        .hr-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .hr-btn:active {
+            transform: scale(0.95);
+        }
+
     </style>
 </head>
 <body>
@@ -299,14 +354,20 @@
 
         <div class="swiper cakeSwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide cake-slide"><img src="images/cake01.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake02.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake03.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake04.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake05.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake06.png" /></div>
-                <div class="swiper-slide cake-slide"><img src="images/cake07.png" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake01.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake02.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake03.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake04.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake05.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake06.png" loading="lazy" /></div>
+                <div class="swiper-slide cake-slide"><img src="images/cake07.png" loading="lazy" /></div>
             </div>
+        </div>
+
+        <div class="hr-section">
+            <h2 class="hr-title">Хочешь в команду?</h2>
+            <p class="hr-desc">Стань частью нашей истории. Мы всегда ищем талантливых бариста и кондитеров.</p>
+            <a href="https://forms.yandex.ru/u/69f1e55649af4771c3cf6f5e" target="_blank" class="hr-btn">Заполнить анкету</a>
         </div>
     </div>
 
