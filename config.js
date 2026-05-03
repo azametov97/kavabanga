@@ -3,7 +3,7 @@
 
 const CONFIG = {
     telegram_url: "https://t.me/kavabangacrimea",
-    review_url: "http://review.kavabanga-dessert.ru",
+    review_url: "http://feedback.kavabanga-dessert.ru",
     contact_url: "https://t.me/ceokavabanga"
 };
 
