@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta charset="utf-8" />
-    <title>KAVA KAVABANGA - Таплинк</title>
+    <title>Сеть кофеен KAVABANGA</title>
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,18 +50,43 @@
             z-index: 1000;
         }
 
-        .telegram, .call {
+        .telegram, .call, .review-btn {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 14px;
+            border-radius: 20px;
             color: white;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
             text-decoration: none;
             transition: background 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
+            white-space: nowrap;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tg-icon {
+            display: none;
+        }
+
+        .footer-link {
+            margin-top: 25px;
+            color: #d0bdaf;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: underline;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
         }
 
         .logo {
@@ -341,8 +366,8 @@
 
     <div class="iphone-pro">
         <div class="header-btns">
-            <a href="https://t.me/kavabangacrimea" target="_blank" class="telegram">написать</a>
-            <a href="tel:+79785396994" class="call">позвонить</a>
+            <a href="#" id="tg_link" target="_blank" class="telegram">Телеграм</a>
+            <a href="#" id="review_link" target="_blank" class="review-btn">Оставить отзыв</a>
         </div>
         
         <img class="logo" src="images/logo.png" />
@@ -442,8 +467,11 @@
             </div>
             <a href="https://forms.yandex.ru/u/69f1e55649af4771c3cf6f5e" target="_blank" class="hr-btn">Заполнить анкету</a>
         </div>
+
+        <a href="#" id="contact_link" target="_blank" class="footer-link">Связаться с руководством</a>
     </div>
 
+    <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // ====== CUSTOM ARC CAROUSEL ======
@@ -615,6 +643,13 @@
                 preloader.classList.add('hidden');
                 document.body.classList.add('loaded');
             }, 800);
+
+            // ПОДСТАНОВКА ССЫЛОК ИЗ CONFIG.JS
+            if (typeof CONFIG !== 'undefined') {
+                document.getElementById('tg_link').href = CONFIG.telegram_url;
+                document.getElementById('review_link').href = CONFIG.review_url;
+                document.getElementById('contact_link').href = CONFIG.contact_url;
+            }
         });
     </script>
 </body>
